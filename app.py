@@ -33,7 +33,7 @@ def addvehiculo():
         cursor = db.cursor()
         cursor.execute('INSERT INTO vehiculos (id, marca, modelo, ano, color, matricula) VALUES (%s, %s, %s, %s, %s, %s)', (id, marca, modelo, ano, color, matricula))
         db.commit()
-        return render_template('index.html')
+        return redirect(url_for('Index'))
     
 
 @app.route('/deletevehiculos', methods=['POST'])
