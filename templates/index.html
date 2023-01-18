@@ -25,6 +25,7 @@
                 <th>ano</th>
                 <th>color</th>
                 <th>matricula</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +37,13 @@
                 <td>{{ vehiculo.3 }}</td>
                 <td>{{ vehiculo.4 }}</td>
                 <td>{{ vehiculo.5 }}</td>
+                <td>
+
+                    <a href="/deletevehiculo/{{vehiculo.0}}">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
-    
+
 </body>
 </html>

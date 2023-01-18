@@ -36,19 +36,12 @@ def addvehiculo():
         return redirect(url_for('Index'))
     
 
-@app.route('/deletevehiculos', methods=['POST'])
-def delete():
-    if request.method == 'POST':
-        id = request.form['id']
-        cursor = db.cursor()
-        cursor.execute('DELETE FROM vehiculos WHERE id = %s', (id))
-        db.commit()
-        return render_template('index.html')
-    return 'delete'
-
-@app.route('/editar')
-def editar():
-    return 'editar'
+@app.route('/deletevehiculo/<string:id>')
+def delete(id):
+    cursor = db.cursor()
+    cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
+    db.commit()
+    return redirect(url_for('Index'))
 
 
 
