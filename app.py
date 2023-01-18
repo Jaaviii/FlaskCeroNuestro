@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 import mysql.connector
 app = Flask(__name__)
@@ -13,11 +13,22 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def Index():
-    return 'hola mundo'
+    return render_template('index.html')
 
-@app.route('/addvehiculo')
-def vehiculo():
-    return 'add vehiculo'
+@app.route('/addvehiculo', methods=['POST'])
+def addvehiculo():
+    if request.method == 'POST':
+        id = request.form['id']
+        marca = request.form['marca']
+        modelo = request.form['modelo']
+        ano = request.form['ano']
+        color = request.form['color']
+        matricula = request.form['matricula']
+
+        cursor = db.cursor()
+        cursor.execute('INSERT INTO vehiculos (id, marca, modelo, ano, color, matricula) VALUES (%s, %s, %s, %s, %s, %s)', (id, marca, modelo, ano, color, matricula))
+        db.commit()
+        return render_template('index.html')
 
 @app.route('/editar')
 def editar():
