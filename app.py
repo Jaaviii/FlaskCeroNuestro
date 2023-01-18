@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 import mysql.connector
 app = Flask(__name__)
@@ -13,7 +13,12 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def Index():
-    return render_template('index.html')
+    cursor= mysql.connector.connect()
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM vehiculos')
+    data = cursor.fetchall()
+    return render_template('index.html' , vehiculos = data)
+
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
@@ -29,14 +34,23 @@ def addvehiculo():
         cursor.execute('INSERT INTO vehiculos (id, marca, modelo, ano, color, matricula) VALUES (%s, %s, %s, %s, %s, %s)', (id, marca, modelo, ano, color, matricula))
         db.commit()
         return render_template('index.html')
+    
+
+@app.route('/deletevehiculos', methods=['POST'])
+def delete():
+    if request.method == 'POST':
+        id = request.form['id']
+        cursor = db.cursor()
+        cursor.execute('DELETE FROM vehiculos WHERE id = %s', (id))
+        db.commit()
+        return render_template('index.html')
+    return 'delete'
 
 @app.route('/editar')
 def editar():
     return 'editar'
 
-@app.route('/delete')
-def delete():
-    return 'delete'
+
 
 if __name__ == '__main__':
     app.run( debug=True)

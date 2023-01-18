@@ -4,7 +4,7 @@
     <title>dgt</title>
 </head>
 <body>
-    <form action="/addvehiculo" method="POST">
+    <form action="/addvehiculo"  method="POST">
         <input type="text" name="id">
         <input type="text" name="marca">
         <input type="text" name="modelo">
@@ -15,5 +15,30 @@
             Enviar
         </button>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>marca</th>
+                <th>modelo</th>
+                <th>ano</th>
+                <th>color</th>
+                <th>matricula</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehiculo in vehiculos %}
+            <tr>
+                <td>{{ vehiculo.0 }}</td>
+                <td>{{ vehiculo.1 }}</td>
+                <td>{{ vehiculo.2 }}</td>
+                <td>{{ vehiculo.3 }}</td>
+                <td>{{ vehiculo.4 }}</td>
+                <td>{{ vehiculo.5 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    
 </body>
 </html>
