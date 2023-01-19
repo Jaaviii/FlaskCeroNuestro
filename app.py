@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
+from data.vehiculos_dao import VehiculoDao
 import mysql.connector
 app = Flask(__name__)
 
@@ -13,34 +14,33 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def Index():
-    cursor= mysql.connector.connect()
-    cursor = db.cursor()
-    cursor.execute('SELECT * FROM vehiculos')
-    data = cursor.fetchall()
-    return render_template('index.html' , vehiculos = data)
+    
+    vehiculo_dao : VehiculoDao = VehiculoDao(db)
+   
+    return render_template('index.html' , vehiculos = vehiculo_dao.dameTodosLosVehiculos())
 
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
     if request.method == 'POST':
-        id = request.form['id']
         marca = request.form['marca']
         modelo = request.form['modelo']
         ano = request.form['ano']
         color = request.form['color']
         matricula = request.form['matricula']
 
-        cursor = db.cursor()
-        cursor.execute('INSERT INTO vehiculos (id, marca, modelo, ano, color, matricula) VALUES (%s, %s, %s, %s, %s, %s)', (id, marca, modelo, ano, color, matricula))
-        db.commit()
+        vehiculo = Vehiculo(marca, modelo, ano, color, matricula)
+        #cursor = db.cursor()
+        #cursor.execute('INSERT INTO vehiculos ( marca, modelo, ano, color, matricula) VALUES ( %s, %s, %s, %s, %s)', ( marca, modelo, ano, color, matricula))
+        #db.commit()
         return redirect(url_for('Index'))
     
 
 @app.route('/deletevehiculo/<string:id>')
 def delete(id):
-    cursor = db.cursor()
-    cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
-    db.commit()
+    #cursor = db.cursor()
+    #cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
+    #db.commit()
     return redirect(url_for('Index'))
 
 
