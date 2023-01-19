@@ -23,10 +23,7 @@ class VehiculoDao():
         cursor.execute('INSERT INTO vehiculos ( marca, modelo, ano, color, matricula) VALUES ( %s, %s, %s, %s, %s)', ( vehiculo.marca, vehiculo.modelo, vehiculo.ano, vehiculo.color, vehiculo.matricula))
         self.db.commit()
 
-    #def delete(self, id):
-    #    cursor = self.db.cursor()
-    #    cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
-    #    self.db.commit()
+ 
     def deletevehiculo(self, id):
         cursor = self.db.cursor()
         cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
