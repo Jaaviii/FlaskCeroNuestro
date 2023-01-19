@@ -16,8 +16,18 @@ class VehiculoDao():
             vehiculos.append(Vehiculo(vehiculo[0], vehiculo[1], vehiculo[2], vehiculo[3], vehiculo[4], vehiculo[5]))
 
         return vehiculos
+    
+    def addvehiculo(self, vehiculo):
 
-    def delete(self,db):
-        cursor = db.cursor()
+        cursor = self.db.cursor()
+        cursor.execute('INSERT INTO vehiculos ( marca, modelo, ano, color, matricula) VALUES ( %s, %s, %s, %s, %s)', ( vehiculo.marca, vehiculo.modelo, vehiculo.ano, vehiculo.color, vehiculo.matricula))
+        self.db.commit()
+
+    #def delete(self, id):
+    #    cursor = self.db.cursor()
+    #    cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
+    #    self.db.commit()
+    def delete(self, id):
+        cursor = self.db.cursor()
         cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
-        db.commit()
+        self.db.commit()

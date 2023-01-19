@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 from data.vehiculos_dao import VehiculoDao
+from data.modelo.vehiculo import Vehiculo
 import mysql.connector
 app = Flask(__name__)
 
@@ -30,9 +31,7 @@ def addvehiculo():
         matricula = request.form['matricula']
 
         vehiculo = Vehiculo(marca, modelo, ano, color, matricula)
-        #cursor = db.cursor()
-        #cursor.execute('INSERT INTO vehiculos ( marca, modelo, ano, color, matricula) VALUES ( %s, %s, %s, %s, %s)', ( marca, modelo, ano, color, matricula))
-        #db.commit()
+    
         return redirect(url_for('Index'))
     
 
