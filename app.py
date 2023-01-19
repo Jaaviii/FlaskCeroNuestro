@@ -16,10 +16,17 @@ db = mysql.connector.connect(
 @app.route('/')
 def Index():
     
+    
+    return render_template('index.html')
+   
+    
+
+@app.route('/vehiculos.html')
+def vehiculos():
+    
     vehiculo_dao : VehiculoDao = VehiculoDao(db)
    
-    return render_template('index.html' , vehiculos = vehiculo_dao.dameTodosLosVehiculos())
-
+    return render_template('vehiculos.html' , vehiculos = vehiculo_dao.dameTodosLosVehiculos())
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
@@ -32,7 +39,7 @@ def addvehiculo():
 
         vehiculo = Vehiculo(marca, modelo, ano, color, matricula)
     
-        return redirect(url_for('Index'))
+        return redirect(url_for('vehiculos'))
     
 
 @app.route('/deletevehiculo/<string:id>')
@@ -40,7 +47,7 @@ def deletevehiculo(id):
     #cursor = db.cursor()
     #cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
     #db.commit()
-    return redirect(url_for('Index'))
+    return redirect(url_for('vehiculos'))
 
 
 

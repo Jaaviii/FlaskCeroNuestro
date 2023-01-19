@@ -1,49 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <title>DGT - Dirección General de Tráfico</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <title>dgt</title>
 </head>
-<body>
-    <h1>Listado de vehiculos DGT</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>MARCA</th>
-                <th>MODEL</th>
-                <th>AÑO</th>
-                <th>COLOR</th>
-                <th>MATRICULA</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for vehiculo in vehiculos %}
-            <tr>
-                <td>{{ vehiculo.id }}</td>
-                <td>{{ vehiculo.marca }}</td>
-                <td>{{ vehiculo.modelo }}</td>
-                <td>{{ vehiculo.ano }}</td>
-                <td>{{ vehiculo.color }}</td>
-                <td>{{ vehiculo.matricula }}</td>
-                <td>
-
-                    <a href="/deletevehiculo/{{vehiculo.id}}">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <form action="/addvehiculo"  method="POST">
-        <input type="text" name="marca">
-        <input type="text" name="modelo">
-        <input type="text" name="ano">
-        <input type="text" name="color">
-        <input type="text" name="matricula">
-        <button type="submit">
-            Añadir vehiculo
-        </button>
-    </form>
-</body>
+  <body class=index>
+    <h1 class=hunoindex> Bienvenido a la página web de la DGT </h1>
+    <button class=buttonindex onclick="location.href='vehiculos.html'">Ver Vehículos</button>
+    <button class=buttonindex onclick="location.href='multas.html'">Ver Multas</button>
+    <div id="footerindex">
+      <p class= cp >Copyright © 2023 DGT</p>
+    </div>
+  </body>
 </html>
