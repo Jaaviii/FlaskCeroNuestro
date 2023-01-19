@@ -36,7 +36,7 @@ def addvehiculo():
     
 
 @app.route('/deletevehiculo/<string:id>')
-def delete(id):
+def deletevehiculo(id):
     #cursor = db.cursor()
     #cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
     #db.commit()
