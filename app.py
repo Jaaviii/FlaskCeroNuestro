@@ -16,7 +16,6 @@ db = mysql.connector.connect(
 @app.route('/')
 def Index():
     
-    
     return render_template('index.html')
    
     
@@ -27,6 +26,12 @@ def vehiculos():
     vehiculo_dao : VehiculoDao = VehiculoDao(db)
    
     return render_template('vehiculos.html' , vehiculos = vehiculo_dao.dameTodosLosVehiculos())
+
+
+@app.route('/multas.html')
+def multas():   
+    return render_template('multas.html')
+
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
