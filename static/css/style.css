@@ -1,0 +1,36 @@
+body{
+
+    background-color: #7FCDCD;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-weight: 400;
+
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+  
+table {
+    margin-left: 15%;
+    width: 70%;
+  }
+  
+  th {
+    height: 70px;
+  }
+  td {
+    text-align: center;
+  }
+
+form {
+    margin-left: 15%;
+    width: 70%;
+  }
+
+h1 {
+    text-align: center;
+}

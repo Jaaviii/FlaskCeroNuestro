@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>dgt</title>
 </head>
 <body>
-    <form action="/addvehiculo"  method="POST">
-        <input type="text" name="marca">
-        <input type="text" name="modelo">
-        <input type="text" name="ano">
-        <input type="text" name="color">
-        <input type="text" name="matricula">
-        <button type="submit">
-            Añadir vehiculo
-        </button>
-    </form>
-
+    <h1>Listado de vehiculos DGT</h1>
     <table>
         <thead>
             <tr>
-                <th>id</th>
-                <th>marca</th>
-                <th>modelo</th>
-                <th>ano</th>
-                <th>color</th>
-                <th>matricula</th>
-                <th>Acciones</th>
+                <th>ID</th>
+                <th>MARCA</th>
+                <th>MODEL</th>
+                <th>AÑO</th>
+                <th>COLOR</th>
+                <th>MATRICULA</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +34,16 @@
             </tr>
             {% endfor %}
         </tbody>
-
+    </table>
+    <form action="/addvehiculo"  method="POST">
+        <input type="text" name="marca">
+        <input type="text" name="modelo">
+        <input type="text" name="ano">
+        <input type="text" name="color">
+        <input type="text" name="matricula">
+        <button type="submit">
+            Añadir vehiculo
+        </button>
+    </form>
 </body>
 </html>
