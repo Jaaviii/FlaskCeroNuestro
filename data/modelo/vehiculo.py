@@ -3,7 +3,7 @@
 
 class Vehiculo():
 
-    def __init__(self, id : int, marca : str, modelo : str, ano : int, color : str, matricula : str):
+    def __init__(self, marca : str, modelo : str, ano : int, color : str, matricula : str,id : int = 0):
 
         self.id = id
         self.marca = marca

@@ -3,10 +3,11 @@
 
 class Multa():
     
-        def __init__(self, id : int, id_vehiculo : int, fecha : str, importe : float, descripcion : str):
+        def __init__(self, id : int,  fecha : str, lugar : str, descripcion : str, id_vehiculo : int):
     
             self.id = id
-            self.id_vehiculo = id_vehiculo
-            self.fecha = fecha
-            self.importe = importe
+            self.fecha= fecha
+            self.lugar = lugar
             self.descripcion = descripcion
+            self.id_vehiculo = id_vehiculo
+

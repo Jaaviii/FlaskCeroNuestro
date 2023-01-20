@@ -43,7 +43,8 @@ def addvehiculo():
         matricula = request.form['matricula']
 
         vehiculo = Vehiculo(marca, modelo, ano, color, matricula)
-    
+        vehiculo_dao : VehiculoDao = VehiculoDao(db)
+        vehiculo_dao.addvehiculo(vehiculo)
         return redirect(url_for('vehiculos'))
     
 
@@ -52,6 +53,8 @@ def deletevehiculo(id):
     #cursor = db.cursor()
     #cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
     #db.commit()
+    vehiculo_dao : VehiculoDao = VehiculoDao(db)
+    vehiculo_dao.deletevehiculo(id)
     return redirect(url_for('vehiculos'))
 
 
