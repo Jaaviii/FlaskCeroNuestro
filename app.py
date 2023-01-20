@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 from data.vehiculos_dao import VehiculoDao
 from data.modelo.vehiculo import Vehiculo
+from data.modelo.multas import Multa
+from data.multas_dao import MultaDao
 import mysql.connector
 app = Flask(__name__)
 
@@ -30,8 +32,9 @@ def vehiculos():
 
 @app.route('/multas.html')
 def multas():   
-    return render_template('multas.html')
 
+    multa_dao : MultaDao = MultaDao(db)
+    return render_template('multas.html', multas = multa_dao.dameTodasLasMultas())
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
@@ -50,9 +53,6 @@ def addvehiculo():
 
 @app.route('/deletevehiculo/<string:id>')
 def deletevehiculo(id):
-    #cursor = db.cursor()
-    #cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
-    #db.commit()
     vehiculo_dao : VehiculoDao = VehiculoDao(db)
     vehiculo_dao.deletevehiculo(id)
     return redirect(url_for('vehiculos'))

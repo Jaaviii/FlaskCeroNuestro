@@ -1,1 +1,42 @@
-multas html tira
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Multas DGT</title>
+</head>
+<body>
+    <h1>Listado de Vehiculos Multados DGT</h1>
+    <table>
+        <thead>
+    
+            <tr>
+                <th>ID</th>
+                <th>FECHA</th>
+                <th>LUGAR</th>
+                <th>DESCRIPCION</th>
+                <th>ID_VEHICULO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for multa in multas %}
+            <tr>
+                <td>{{ multa.id }}</td>
+                <td>{{ multa.fecha }}</td>
+                <td>{{ multa.lugar }}</td>
+                <td>{{ multa.descripcion }}</td>
+                <td>{{ multa.id_vehiculo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/addmulta"  method="POST">
+        <input type="text" name="fecha">
+        <input type="text" name="lugar">
+        <input type="text" name="descripcion">
+        <input type="text" name="id_vehiculo">
+        <button type="submit">
+            Añadir multa
+        </button>   
+    </form>
+</body>
+</html>
