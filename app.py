@@ -30,11 +30,7 @@ def vehiculos():
     return render_template('vehiculos.html' , vehiculos = vehiculo_dao.dameTodosLosVehiculos())
 
 
-@app.route('/multas.html')
-def multas():   
 
-    multa_dao : MultaDao = MultaDao(db)
-    return render_template('multas.html', multas = multa_dao.dameTodasLasMultas())
 
 @app.route('/addvehiculo', methods=['POST'])
 def addvehiculo():
@@ -56,6 +52,33 @@ def deletevehiculo(id):
     vehiculo_dao : VehiculoDao = VehiculoDao(db)
     vehiculo_dao.deletevehiculo(id)
     return redirect(url_for('vehiculos'))
+
+@app.route('/multas.html')
+def multas():   
+
+    multa_dao : MultaDao = MultaDao(db)
+    return render_template('multas.html', multas = multa_dao.dameTodasLasMultas())
+
+    
+
+@app.route('/addmulta', methods=['POST'])
+def addmulta():
+    if request.method == 'POST':
+        fecha = request.form['fecha']
+        lugar = request.form['lugar']
+        descripcion = request.form['descripcion']
+        id_vehiculo = request.form['id_vehiculo']
+
+        multa = Multa(fecha, lugar, descripcion, id_vehiculo)
+        multa_dao : MultaDao = MultaDao(db)
+        multa_dao.addmulta(multa)
+        return redirect(url_for('multas'))
+
+@app.route('/deletemulta/<string:id>')
+def deletemulta(id):
+    multa_dao : MultaDao = MultaDao(db)
+    multa_dao.deletemulta(id)
+    return redirect(url_for('multas'))
 
 
 

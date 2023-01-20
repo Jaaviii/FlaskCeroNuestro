@@ -25,6 +25,10 @@
                 <td>{{ multa.lugar }}</td>
                 <td>{{ multa.descripcion }}</td>
                 <td>{{ multa.id_vehiculo }}</td>
+                <td>
+
+                    <a href="/deletemulta/{{multa.id}}">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -36,7 +40,8 @@
         <input type="text" name="id_vehiculo">
         <button type="submit">
             Añadir multa
-        </button>   
+        </button>
+
     </form>
 </body>
 </html>

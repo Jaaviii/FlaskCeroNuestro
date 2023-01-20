@@ -11,6 +11,19 @@ class MultaDao():
         multas = []
 
         for multa in data:
-            multas.append(Multa(multa[0], multa[1], multa[2], multa[3], multa[4]))
+            multas.append(Multa(multa[1], multa[2], multa[3], multa[4], multa[0]))
 
         return multas
+
+    def addmulta(self, multa):
+            
+            cursor = self.db.cursor()
+            cursor.execute('INSERT INTO multas ( fecha, lugar, descripcion, id_vehiculo) VALUES ( %s, %s, %s, %s)', ( multa.fecha, multa.lugar, multa.descripcion, multa.id_vehiculo))
+            self.db.commit()
+
+    def deletemulta(self,id):
+        cursor = self.db.cursor()
+        cursor.execute('DELETE FROM multas WHERE id = {0}'.format(id))
+        self.db.commit()
+
+    
