@@ -26,6 +26,6 @@ class VehiculoDao():
  
     def deletevehiculo(self,id):
         cursor = self.db.cursor()
-        cursor.execute('DELETE FROM vehiculos WHERE id = {0}'.format(id))
+        cursor.execute('DELETE FROM vehiculos WHERE id = %s',(id))
         self.db.commit()
 
