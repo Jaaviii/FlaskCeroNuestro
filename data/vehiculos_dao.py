@@ -13,7 +13,7 @@ class VehiculoDao():
         vehiculos = []
 
         for vehiculo in data:
-            vehiculos.append(Vehiculo(vehiculo[0], vehiculo[1], vehiculo[2], vehiculo[3], vehiculo[4], vehiculo[5]))
+            vehiculos.append(Vehiculo(vehiculo[1], vehiculo[2], vehiculo[3], vehiculo[4], vehiculo[5], vehiculo[0]))
 
         return vehiculos
     
@@ -26,6 +26,6 @@ class VehiculoDao():
  
     def deletevehiculo(self,id):
         cursor = self.db.cursor()
-        cursor.execute('DELETE FROM vehiculos WHERE id = %s',(id))
+        cursor.execute("DELETE FROM vehiculos WHERE id = %s",[id])
         self.db.commit()
 
