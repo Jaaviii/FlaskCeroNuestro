@@ -21,9 +21,8 @@ class MultaDao():
             cursor.execute('INSERT INTO multas ( fecha, lugar, descripcion, id_vehiculo) VALUES ( %s, %s, %s, %s)', ( multa.fecha, multa.lugar, multa.descripcion, multa.id_vehiculo))
             self.db.commit()
 
+
     def deletemulta(self,id):
         cursor = self.db.cursor()
-        cursor.execute('DELETE FROM multas WHERE id = {0}'.format(id))
+        cursor.execute('DELETE FROM multas WHERE id = %s',[id])
         self.db.commit()
-
-    
