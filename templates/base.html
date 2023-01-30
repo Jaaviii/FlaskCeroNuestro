@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DGT - Dirección General de Tráfico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+  <body class=index>
+    {% block content %}
+    
+    {% endblock %}
+    
+    {% block footer %}
+    <div id="footerindex">
+      <p class= cp >Copyright © 2023 DGT</p>
+    </div>
+    {% endblock %}
+  </body>
+</html>

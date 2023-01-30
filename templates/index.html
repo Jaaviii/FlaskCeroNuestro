@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>DGT - Dirección General de Tráfico</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-</head>
-  <body class=index>
+{% extends "base.html" %}
+{% block content %}
     <h1 class=hunoindex> Bienvenido a la página web de la DGT </h1>
     <button class=buttonindex onclick="location.href='vehiculos.html'">Ver Vehículos</button>
     <button class=buttonindex onclick="location.href='multas.html'">Ver Multas</button>
-    <div id="footerindex">
-      <p class= cp >Copyright © 2023 DGT</p>
-    </div>
-  </body>
-</html>
+{% endblock %}
