@@ -1,6 +1,8 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html>
 <head>
+    {% block content%}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>Multas DGT</title>
 </head>
@@ -27,7 +29,7 @@
                 <td>{{ multa.id_vehiculo }}</td>
                 <td>
 
-                    <a href="/deletemulta/{{multa.id}}">Delete</a>
+                    <a class=deletee href="/deletemulta/{{multa.id}}">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -43,5 +45,6 @@
         </button>
 
     </form>
+    {% endblock %}
 </body>
 </html>

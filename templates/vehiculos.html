@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% block content%}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>dgt</title>
 </head>
@@ -30,7 +31,7 @@
                 <td>{{ vehiculo.matricula }}</td>
                 <td>
 
-                    <a href="/deletevehiculo/{{vehiculo.id}}">Delete</a>
+                    <a class=deletee href="/deletevehiculo/{{vehiculo.id}}">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -46,5 +47,6 @@
             Añadir vehiculo
         </button>
     </form>
+    {% endblock %}
 </body>
 </html>
