@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_mysqldb import MySQL
 from data.vehiculos_dao import VehiculoDao
 from data.modelo.vehiculo import Vehiculo
 from data.modelo.multas import Multa
