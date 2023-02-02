@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-ENTRYPOINT [ "python3", "/app/FlaskCeroNuestro/app.py"]
+ENTRYPOINT [ "python3", "FlaskCeroNuestro/app.py"]
