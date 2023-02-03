@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-WORKDIR /app/FlaskCeroNuestro
-
-ENTRYPOINT [ "python3", "/app/FlaskCeroNuestro/app.py"]
+CMD [ "python3", "./app.py"]
